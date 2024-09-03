@@ -1,6 +1,6 @@
 function loadJSON() {
 
-  fetch("./public/data.json")
+  fetch("/data.json")
 .then((response) => {
       return response.json();
   })
@@ -16,7 +16,7 @@ function loadJSON() {
       // Iterere gjennom listen med for...of og bruke template literals
       for (const project of data) {
           const articleHTML = `
-              <article>
+              <article class="articles">
                   <h2>${project.name}</h2>
                   <h4>${project.company}</h4>
                   <p>${project.description}</p>
@@ -32,6 +32,8 @@ function loadJSON() {
 
 
   })
+
+  
 }
 
 loadJSON();

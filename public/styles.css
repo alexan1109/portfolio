@@ -51,24 +51,12 @@ h2 {
   margin: 0 auto;
 }
 
-.position-beside {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-
-.position-beside > p {
-  margin: 15px;
-  
-}
-
-.align-star {
-vertical-align: 0%;
-}
-
 #position-vertically {
   margin: 0 auto;
   padding: 10px;
   width: 500px;
+}
+
+.articles > img {
+  margin-bottom: 15px;
 }

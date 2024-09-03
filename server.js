@@ -28,7 +28,7 @@ const projects = [
 
 
 // Ruter
-app.get("/", (c) => {
+app.post("/", (c) => {
   return c.json(projects);
 });
 
@@ -38,8 +38,19 @@ app.get("/json", async (c) => {
   return c.json(dataToJson);
 });
 
+app.post("/add", async (c) => {
+  const newProject = await c.req.json();
+  console.log(newProject);
+  // Legger til den nye vanen i listen med en unik ID og tidsstempel
+  projects.push({ id: crypto.randomUUID(), createdAt: new Date(), ...newProject });
+
+  // Returnerer den oppdaterte listen med vaner og en 201 (Created) statuskode
+  return c.json(projects, { status: 201 });
+});
+
+
 // Definerer porten serveren skal lytte på
-const port = 5173;
+const port = 3999;
 
 console.log(`Server is running on port ${port}`);
 
