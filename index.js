@@ -9,10 +9,10 @@ form.addEventListener("submit", async (event) => {
 
   // Oppretter et nytt vane-objekt basert på brukerens input
   const newProject = {
-    name: event.target.projects.name.value,
-    company: event.target.projects.company.value,
-    description: event.target.projects.description.value,
-    url: event.target.projects.url.src,
+    name: event.target.elements.name.value,
+    company: event.target.elements.company.value,
+    description: event.target.elements.description.value,
+    url: event.target.elements.url.src,
     createdAt: new Date(),
   };
 
@@ -39,24 +39,3 @@ form.addEventListener("submit", async (event) => {
     console.error("Feil ved sending av data til serveren:", error);
   }
 });
-
-// Funksjon for å oppdatere visningen av vaner på nettsiden
-function updateProjectWrapper() {
-    console.log(projects);
-    ProjectWrapper.innerHTML = ""; // Tømmer listen før ny oppdatering
-  
-    // Legger til hver vane som et listeelement
-    for (const projectData of projects) {
-      const projectName = document.createElement("h2");
-      const projectCompany = document.createElement("h4");
-      const projectDescription = document.createElement("p");
-      const projectUrl = document.createElement("img");
-      projectName.textContent = `${projectData.name}`
-      projectCompany.textContent = `${projectData.company}`
-      projectDescription.textContent = `${projectData.description}`
-      projectUrl.src = `${projectData.url} - ${new Date(
-        project.createdAt
-      ).toLocaleDateString()}`;
-      ProjectWrapper.appendChild(projectName, projectCompany, projectDescription, projectUrl);
-    }
-}
