@@ -9,10 +9,7 @@ function loadJSON() {
 
       // Hent referanse til project-wrapper
       const projectContainer = document.getElementById('grid-container');
-  
-      // Nulle ut innholdet som er i project-wrapper fra før
-      projectContainer.innerHTML = '';
-  
+   
       // Iterere gjennom listen med for...of og bruke template literals
       for (const project of data) {
           const articleHTML = `

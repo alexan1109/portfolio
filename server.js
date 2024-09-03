@@ -28,7 +28,7 @@ const projects = [
 
 
 // Ruter
-app.post("/", (c) => {
+app.get("/", (c) => {
   return c.json(projects);
 });
 
@@ -41,10 +41,10 @@ app.get("/json", async (c) => {
 app.post("/add", async (c) => {
   const newProject = await c.req.json();
   console.log(newProject);
-  // Legger til den nye vanen i listen med en unik ID og tidsstempel
-  projects.push({ id: crypto.randomUUID(), createdAt: new Date(), ...newProject });
+  // Legger til det nye prosjektet i listen med en unik ID og tidsstempel
+  projects.push({ id: crypto.randomUUID(), ...newProject });
 
-  // Returnerer den oppdaterte listen med vaner og en 201 (Created) statuskode
+  // Returnerer den oppdaterte listen med prosjekter og en 201 (Created) statuskode
   return c.json(projects, { status: 201 });
 });
 
