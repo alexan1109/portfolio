@@ -12,7 +12,7 @@ form.addEventListener("submit", async (event) => {
     name: event.target.elements.pname.value,
     company: event.target.elements.pcompany.value,
     description: event.target.elements.pdescription.value,
-    url: event.target.elements.pimage.src,
+    url: event.target.elements.pimage.value,
   };
 
   projects.push(newProject); // Legger til det nye prosjektet i den interne listen
@@ -46,6 +46,22 @@ function updateProjectWrapper() {
 
   // Legger til hver vane som et listeelement
   for (const project of projects) {
+          const articleHTML = `
+              <article class="articles">
+                  <h2>${project.name}</h2>
+                  <h4>${project.company}</h4>
+                  <p>${project.description}</p>
+                  <img src=${project.url} />
+              </article>
+              `
+          ;
+  
+          // Legge til den nye article-en direkte i project-wrapper
+          ProjectWrapper.insertAdjacentHTML('beforeend', articleHTML);
+      }
+    }/*
+  for (const project of projects) {
+    const projectArticle = document.createElement("article");
     const projectName = document.createElement("h2");
     const projectCompany = document.createElement("h4");
     const projectDescription = document.createElement("p");
@@ -55,10 +71,13 @@ function updateProjectWrapper() {
     projectDescription.textContent = `${project.description}`;
     projectImage.src = `${project.url}`;
 
-    ProjectWrapper.appendChild(projectName);
-    ProjectWrapper.appendChild(projectCompany);
-    ProjectWrapper.appendChild(projectDescription);
-    ProjectWrapper.appendChild(projectImage);
+    ProjectArticle.appendChild(projectName);
+    ProjectArticle.appendChild(projectCompany);
+    ProjectArticle.appendChild(projectDescription);
+    ProjectArticle.appendChild(projectImage);
+
+    ProjectWrapper.appendChild(projectArticle);
 
   }
 }
+*/
