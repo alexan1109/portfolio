@@ -1,13 +1,19 @@
 function createProject() {
+
+
     return(
-        <>
-            <form>
-                <input name="projectName" id="projectName" type="text" placeholder="Project name"></input>
-                <input name="companyName" id="companyName" type="text" placeholder="Company name"></input>
-                <input name="description" id="description" type="text" placeholder="Project description"></input>
-                <input name="url" id="url" type="text" placeholder="image url"></input>     
-            </form>
-        </>
+            <form id="projectForm" method="POST" action="/">
+            <label>Name: </label>
+            <input type="text" id="pname" name="pname" />
+            <label>Company: </label>
+            <input type="text" id="pcompany" name="pcompany" />
+            <label>Description: </label>
+            <input type="text" id="pdescription" name="pdescription" />
+            <label>Image URL: </label>
+            <input type="text" id="pimage" />
+            <button type="submit" id="button-bgcolor add-new-project">Submit</button>
+          </form>
+        
 
     )
 }
