@@ -1,5 +1,6 @@
 function Experiences() {
-    const experiences = [
+  
+  const experiences = [
         { id: 0,
          experience: 'HTML',
        },
@@ -28,7 +29,7 @@ function Experiences() {
     const Experience = ({experiences}: {experiences: Readonly<ExperienceProps>}) => {
     return(
     <>
-        <p>{experiences.experience}.</p>
+        <p>{experiences.experience}</p>
     </>
   );
 }
@@ -36,11 +37,16 @@ function Experiences() {
     const Experiences = ({experiences}:{experiences: Readonly<ExperienceProps[]>}) => {
         return (
         <section>
-        {experiences.map((data) => (
+          <h4>My experiences with data languages:</h4>
+        {experiences.length === 0 ? (
+          <p>You have no experiences.</p>
+        ) :(
+        experiences.map((data) => (
             <article key={data.id}>
             <Experience experiences={data} />
             </article>
-        ))}
+        ))
+      )}
         </section>
         
         );

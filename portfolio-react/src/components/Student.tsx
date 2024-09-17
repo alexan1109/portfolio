@@ -12,9 +12,9 @@ const points = 180
 function Header({ student, degree, points }: Student) {
     return (
       <article>
-      <h2>{student}</h2>
-      <h4>{degree}</h4>
-      <p>{points}</p>
+      <h4>Student name: {student}</h4>
+      <h4>Degree: {degree}</h4>
+      <p>Points: {points}</p>
       </article>
     )
   }

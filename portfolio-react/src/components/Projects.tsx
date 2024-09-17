@@ -55,14 +55,18 @@ const ProjectComp  = ({projects}: {projects: Readonly<ProjectProps>}) =>  {
   
   const Projects = ({projects}:{projects: Readonly<ProjectProps[]>}) => {
     return (
-      <section>
-        {projects.map((data) => (
-          <article key={data.id}>
+      <section id="grid-container">
+        {projects.length === 0 ? (
+          <p>You have no projects.</p>
+      ) : (
+        projects.map((data) => (
+          <article className="articles" key={data.id}>
             <ProjectComp projects={data} />
           </article>
-        ))}
+        ))
+      )}
       </section>
-    );
+    );   
   }
 
 
