@@ -1,5 +1,6 @@
+import CreatingProjects from './createProject';
+
 function Projects () {
-    
     const projects = [
     {
         id: 0,
@@ -56,6 +57,7 @@ const ProjectComp  = ({projects}: {projects: Readonly<ProjectProps>}) =>  {
   const Projects = ({projects}:{projects: Readonly<ProjectProps[]>}) => {
     return (
       <section id="grid-container">
+        
         {projects.length === 0 ? (
           <p>You have no projects.</p>
       ) : (
@@ -65,6 +67,7 @@ const ProjectComp  = ({projects}: {projects: Readonly<ProjectProps>}) =>  {
           </article>
         ))
       )}
+      
       </section>
     );   
   }
@@ -72,6 +75,7 @@ const ProjectComp  = ({projects}: {projects: Readonly<ProjectProps>}) =>  {
 
 return(
 <>
+<CreatingProjects list={projects} />
 <Projects projects={projects}  />
 </>
 )
