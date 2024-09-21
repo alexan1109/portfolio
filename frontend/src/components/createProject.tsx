@@ -8,7 +8,7 @@ type ProjectProps = {
     url: string;
   }
 
-function createProject (setProjects: any, projects: ProjectProps[]) {
+function createProject ({setProjects}: any) {
 
 
     const handleFormSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -20,15 +20,15 @@ function createProject (setProjects: any, projects: ProjectProps[]) {
         if (!form) return;
         const formData = new FormData(form);
 
-        const name = formData.get('pname');
+        const title = formData.get('pname');
         const company = formData.get('pcompany');
         const description = formData.get('pdescription');
         const url = formData.get('pimage');
 
-        if (!name || !company || !description || !url) return;
-        console.log(projects);
-        setProjects(...projects, { id: crypto.randomUUID(), name, company, description, url });
-        
+        if (!title || !company || !description || !url) return;
+        setProjects((prevProjects: any) => {
+            return [...prevProjects, { id: crypto.randomUUID(), title, company, description, url }]});
+
         form.reset();
     }
 

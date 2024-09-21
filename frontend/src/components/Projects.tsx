@@ -1,9 +1,7 @@
-import { useEffect, useState } from 'react';
+import {useState, useEffect } from 'react';
 import CreatingProjects from './createProject';
 
 function Projects () {
-  const [projects, setProjects]= useState(Array<ProjectProps>);
-
   const baseProjects: ProjectProps[] = [
     {
     id: 0,
@@ -36,9 +34,7 @@ function Projects () {
     url: "https://images.unsplash.com/photo-1472289065668-ce650ac443d2?q=80&w=200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   }];
 
-  useEffect(() => {
-    setProjects(baseProjects);
-  }, [])
+  const [projects, setProjects] = useState<ProjectProps[]>(baseProjects);
     
   
   //projects
@@ -62,6 +58,7 @@ const ProjectComp  = ({projects}: {projects: Readonly<ProjectProps>}) =>  {
   }
   
   const Projects = ({projects}:{projects: Readonly<ProjectProps[]>}) => {
+
     return (
       <section id="grid-container">
         
@@ -71,14 +68,17 @@ const ProjectComp  = ({projects}: {projects: Readonly<ProjectProps>}) =>  {
         projects.map((data) => (
           <article className="articles" key={data.id}>
             <ProjectComp projects={data} />
-          </article>
-        ))
-      )}
-      
+            <button type='button' onClick={() => removeProject(data.id)}> [Delete project]</button>
+          </article> 
+        )) 
+      ) }    
       </section>
+      
     );   
   }
-
+  const removeProject = (id: any) => {
+    setProjects((prevProjects: any[]) => prevProjects.filter((data: { id: any; }) => data.id !== id));
+  };
 
 return(
 <>
