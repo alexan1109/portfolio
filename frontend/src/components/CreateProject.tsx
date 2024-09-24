@@ -8,7 +8,7 @@ type ProjectProps = {
     url: string;
   }
 
-function createProject ({setProjects}: any) {
+function CreateProject ({setProjects}: any) {
 
 
     const handleFormSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -50,4 +50,4 @@ function createProject ({setProjects}: any) {
 
     )
 }
-export default createProject
+export default CreateProject

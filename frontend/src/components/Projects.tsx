@@ -1,4 +1,4 @@
-import CreatingProjects from './createProject';
+import CreatingProjects from './CreateProject';
 
 type ProjectProps = {
   id: number;
@@ -21,15 +21,15 @@ const ProjectComp  = ({projects}: {projects: Readonly<ProjectProps>}) =>  {
     );
   }
   
-  const Projects = ({projects}:{projects: Readonly<ProjectProps[]>}) => {
+  const Projects = ({projects, setProjects}:{projects: Readonly<ProjectProps[]>, setProjects: React.Dispatch<React.SetStateAction<ProjectProps[]>>}) => {
 
     return (
       <section id="grid-container">
         
-        {projects.length === 0 ? (
+        {projects?.length === 0 ? (
           <p>You have no projects.</p>
       ) : (
-        projects.map((data) => (
+        projects.map((data: ProjectProps) => (
           <article className="articles" key={data.id}>
             <ProjectComp projects={data} />
             <button type='button' onClick={() => removeProject(data.id)}> [Delete project]</button>
@@ -46,8 +46,8 @@ const ProjectComp  = ({projects}: {projects: Readonly<ProjectProps>}) =>  {
 
 return(
 <>
-<CreatingProjects setProjects={setProjects} projects={projects} />
-<Projects projects={projects}  />
+<CreatingProjects setProjects={setProjects} />
+<Projects projects={projects} setProjects={setProjects}/>
 </>
 )
 }
