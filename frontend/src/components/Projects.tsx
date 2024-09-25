@@ -40,7 +40,7 @@ function Projects ({projects, setProjects}: { projects: ProjectProps[], setProje
     );   
   }
 
-  const removeProject = (id: any) => {
+  const removeProject = (id: number) => {
     setProjects((prevProjects) => prevProjects.filter((data) => data.id !== id));
   };
 

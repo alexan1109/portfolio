@@ -1,4 +1,7 @@
 import {useState, type FormEvent} from 'react'
+interface CreateProjectProps {
+    setProjects: React.Dispatch<React.SetStateAction<ProjectProps[]>>;
+  }
 
 type ProjectProps = {
     id: number;
@@ -8,7 +11,7 @@ type ProjectProps = {
     url: string;
   }
 
-function CreateProject (setProjects: any) {
+function CreateProject ({ setProjects }: CreateProjectProps) {
 
 
     const handleFormSubmit = (event: FormEvent<HTMLFormElement>) => {

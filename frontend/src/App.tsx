@@ -2,7 +2,7 @@ import Experiences from './components/Experiences'
 import Projects from './components/Projects'
 import Contact from './components/Contact'
 import Student from './components/Student'
-import CreatingProjects from './components/CreateProject'
+import CreateProject from './components/CreateProject'
 import { ofetch } from "ofetch";
 import {useEffect, useState } from 'react';
 
@@ -70,7 +70,7 @@ function App() {
     <div>
     <Student />
     <Experiences />
-    <CreatingProjects setProjects={setProjects} />
+    <CreateProject setProjects={setProjects} />
     <Projects projects={projects} setProjects={setProjects} />
     <Contact />
   </div>
