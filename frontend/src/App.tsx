@@ -55,7 +55,7 @@ function App() {
     try {
       const response = await ofetch("http://localhost:3000/projects");
       console.log("data fetched");
-      setProjects(response.data); // Assuming response.data exists
+      setProjects(response.data);
       console.log("data initialized");
     } catch (error) {
       console.error("Error fetching data:", error);
