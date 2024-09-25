@@ -4,13 +4,13 @@ import Contact from './components/Contact'
 import Student from './components/Student'
 import CreatingProjects from './components/CreateProject'
 import { ofetch } from "ofetch";
-import React, { useEffect, useState } from 'react';
+import {useEffect, useState } from 'react';
 
 type ProjectProps = {
   id: number;
   title: string;
   company: string;
-  description: String;
+  description: string;
   url: string;
 }
 

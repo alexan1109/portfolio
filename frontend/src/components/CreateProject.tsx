@@ -4,7 +4,7 @@ type ProjectProps = {
     id: number;
     title: string;
     company: string;
-    description: String;
+    description: string;
     url: string;
   }
 
