@@ -4,7 +4,7 @@ import Contact from './components/Contact'
 import Student from './components/Student'
 import CreatingProjects from './components/CreateProject'
 import { ofetch } from "ofetch";
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 type ProjectProps = {
   id: number;
@@ -50,15 +50,16 @@ function App() {
 
   const [projects, setProjects] = useState<ProjectProps[]>(baseProjects);
 
-  const initializeData = () => {
+  const initializeData = async () => {
     console.log("fetching data");
-    ofetch("<http://localhost:3000/projects>").then(
-      (projects: { data: any}) => {
-        console.log("data fetched");
-        setProjects(projects.data);
-        console.log("data initialized");
-      }
-    );
+    try {
+      const response = await ofetch("http://localhost:3000/projects");
+      console.log("data fetched");
+      setProjects(response.data); // Assuming response.data exists
+      console.log("data initialized");
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
   };
   
   useEffect(() => {
