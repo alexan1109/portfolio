@@ -8,7 +8,7 @@ type ProjectProps = {
     url: string;
   }
 
-function CreateProject ({setProjects}: any) {
+function CreateProject (setProjects: any) {
 
 
     const handleFormSubmit = (event: FormEvent<HTMLFormElement>) => {

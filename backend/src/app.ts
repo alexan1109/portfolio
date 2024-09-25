@@ -13,7 +13,7 @@ app.get("/projects", (c) => {
 });
 
 app.post("/projects", async (c) => {
-  const dataFromFrontend = await c.req.json<{ title: string, company: string, description: string; url: string; }>();
+  const dataFromFrontend = await c.req.json<{ id: Number, title: string, company: string, description: string; url: string; }>();
 
   const created = {
     id: crypto.randomUUID(),

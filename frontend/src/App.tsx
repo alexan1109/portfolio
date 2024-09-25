@@ -2,6 +2,7 @@ import Experiences from './components/Experiences'
 import Projects from './components/Projects'
 import Contact from './components/Contact'
 import Student from './components/Student'
+import CreatingProjects from './components/CreateProject'
 import { ofetch } from "ofetch";
 import { useEffect, useState } from 'react';
 
@@ -14,6 +15,7 @@ type ProjectProps = {
 }
 
 function App() {  
+  
   const baseProjects: ProjectProps[] = [
     {
     id: 0,
@@ -67,6 +69,7 @@ function App() {
     <div>
     <Student />
     <Experiences />
+    <CreatingProjects setProjects={setProjects} />
     <Projects projects={projects} setProjects={setProjects} />
     <Contact />
   </div>

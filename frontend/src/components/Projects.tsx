@@ -1,4 +1,4 @@
-import CreatingProjects from './CreateProject';
+import React from "react";
 
 type ProjectProps = {
   id: number;
@@ -7,10 +7,9 @@ type ProjectProps = {
   description: String;
   url: string;
 }
-function Projects ({projects, setProjects}: {projects: any, setProjects: any}) {
-    
+function Projects ({projects, setProjects}: { projects: ProjectProps[], setProjects: React.Dispatch<React.SetStateAction<ProjectProps[]>>}) {
 
-const ProjectComp  = ({projects}: {projects: Readonly<ProjectProps>}) =>  {
+  const ProjectComp  = ({projects}: {projects: Readonly<ProjectProps>}) =>  {
     return(
       <>
         <h2>{projects.title}</h2>
@@ -21,34 +20,34 @@ const ProjectComp  = ({projects}: {projects: Readonly<ProjectProps>}) =>  {
     );
   }
   
-  const Projects = ({projects, setProjects}:{projects: Readonly<ProjectProps[]>, setProjects: React.Dispatch<React.SetStateAction<ProjectProps[]>>}) => {
+  const Projects = ({projects}:{projects: Readonly<ProjectProps[]>}) => {
 
     return (
       <section id="grid-container">
         
-        {projects?.length === 0 ? (
+        {projects.length === 0 ? (
           <p>You have no projects.</p>
       ) : (
-        projects.map((data: ProjectProps) => (
+        projects.map((data) => (
           <article className="articles" key={data.id}>
             <ProjectComp projects={data} />
             <button type='button' onClick={() => removeProject(data.id)}> [Delete project]</button>
           </article> 
         )) 
-      ) }    
+) }    
       </section>
       
     );   
   }
+
   const removeProject = (id: any) => {
-    setProjects((prevProjects: any[]) => prevProjects.filter((data: { id: any; }) => data.id !== id));
+    setProjects((prevProjects) => prevProjects.filter((data) => data.id !== id));
   };
 
 return(
-<>
-<CreatingProjects setProjects={setProjects} />
-<Projects projects={projects} setProjects={setProjects}/>
-</>
+  <>
+    <Projects projects={projects}/>  
+  </>
 )
 }
 
