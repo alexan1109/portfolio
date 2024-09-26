@@ -77,4 +77,8 @@ function App() {
   )
 }
 
+/* REFAKTORERINGSMULIGHETER */
+/* Jeg kunne hatt en komponent for grunnleggende-informasjon, en for erfaringer, en for prosjekt-skjemaet og en for prosjekter. Fordelen er at det
+vil være lettere å endre spesifikke deler av nettsiden, men kan også bli uoversiktlig hvis applikasjonen blir veldig stor.  
+Jeg kunne også hatt en type-komponent for alle typene. Det gjør det lettere å gjenbruke typene, men igjen, kan bli uoversiktlig hvis applikasjonen vokser seg større.*/
 export default App;
