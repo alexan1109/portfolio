@@ -6,5 +6,5 @@ export type ProjectType = {
     createdAt: string,
 }
 
-export type ID = ReturnType<typeof crypto.randomUUID>;
+export type Id = ReturnType<typeof crypto.randomUUID>;
 

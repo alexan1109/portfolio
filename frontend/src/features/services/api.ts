@@ -1,8 +1,8 @@
 import { ofetch } from "ofetch";
-import { endpoints } from "@/config/urls";
+import { endpoints } from "@/src/config/urls/endpoints";
 import {schema } from "@/services/api"
 import { projectsSchema } from "../helpers/validate";
-import type {Id } from "@/types/Id";
+import type {Id } from "@/src/types/Id";
 
 const url = endpoints.projects;
 

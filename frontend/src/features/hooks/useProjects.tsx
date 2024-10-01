@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import projectsApi from "../services/api";
-import type { Project as ProjectType, Id } from "@/types";
+import type { ProjectType, Id } from "@/src/types";
 
 export function useProjects() {
     const [loading, setLoading] = useState(true);
