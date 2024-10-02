@@ -13,8 +13,8 @@ type ProjectProps = {
 
     const { projects = [], handleProjectMutation, children } = props;
 
-    const addProject = async (title: string, company: string, description: string, url: string, website: string) => {
-        handleProjectMutation("add", { title, company, description, url, website});
+    const addProject = async (title: string, company: string, description: string, url: string, website: string, createdAt: Date) => {
+        handleProjectMutation("add", { title, company, description, url, website, createdAt});
       };
 
       const removeProject = (id: number) => {

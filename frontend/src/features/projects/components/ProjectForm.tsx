@@ -1,21 +1,22 @@
 import useProjectForm from "../hooks/useProjectForm.tsx";
 
 type ProjectFormProps = {
-    addProject: (title: string, company: string, description: string, url: string, website: string) => void;
+    addProject: (title: string, company: string, description: string, url: string, website: string, createdAt: string) => void;
   };
 
   export default function ProjectForm(props: Readonly<ProjectFormProps>) {
     const { addProject } = props;
 
-    const { handleSubmit, getFieldProps, isFieldInvalid } = useProjectReducerForm({
-        initialFields: { title: "", company: "", descirption: "", url: "", website: "",},
-        onSubmit: (data: { title: string; company: string; description: string; url: string; website: string; }) => addProject(data.title, data.company, data.description, data.url, data.website),
+    const { handleSubmit, getFieldProps, isFieldInvalid } = useProjectForm({
+        initialFields: { title: "", company: "", description: "", url: "", website: "", createdAt: "",},
+        onSubmit: (data: { title: string; company: string; description: string; url: string; website: string; createdAt: string }) => addProject(data.title, data.company, data.description, data.url, data.website, data.createdAt),
         validate: {
           title: (_: any, value: string | any[]) => value.length > 2,
           company: (_: any, value: string | any[]) => value.length > 2,
           description: (_: any, value: string | any[]) => value.length > 2,
           url: (_: any, value: string | any[]) => value.length > 2,
-          adress: (_: any, value: string | any[]) => value.length > 2,
+          website: (_: any, value: string | any[]) => value.length > 2,
+          createdAt: (_: any, value: string | any[]) => value.length > 2,
         },
       });
 
@@ -31,29 +32,29 @@ type ProjectFormProps = {
               </p>
             ) : null}</label><br/><br/>
                 <label>Company: <br/>
-                <input type="text" id="pcompany" name="pcompany" required {!isFieldInvalid ? "success" : ""}   {...getFieldProps("title")} />
+                <input type="text" id="pcompany" name="pcompany" required {!isFieldInvalid ? "success" : ""}   {...getFieldProps("company")} />
                 {isFieldInvalid("company") ? (
               <p>
                 Title must be at least three letters long
               </p>
             ) : null}</label><br/><br/>
                 <label>Description: <br/>
-                <input type="text" id="pdescription" name="pdescription" required {!isFieldInvalid ? "success" : ""}   {...getFieldProps("title")}/>
+                <input type="text" id="pdescription" name="pdescription" required {!isFieldInvalid ? "success" : ""}   {...getFieldProps("description")}/>
                 {isFieldInvalid("description") ? (
               <p >
                 Title must be at least three letters long
               </p>
             ) : null}</label><br/><br/>
                 <label>Image URL: <br/>
-                <input type="text" id="pimage" name="pimage" required {!isFieldInvalid ? "success" : ""}   {...getFieldProps("title")}/>
+                <input type="text" id="pimage" name="pimage" required {!isFieldInvalid ? "success" : ""}   {...getFieldProps("url")}/>
                 {isFieldInvalid("url") ? (
               <p>
                 Title must be at least three letters long
               </p>
             ) : null}</label><br/><br/>
             <label>Website-adress:<br/>
-            <input type="text" id="pimage" name="pimage" required {!isFieldInvalid ? "success" : ""}   {...getFieldProps("title")}/>
-                {isFieldInvalid("adress") ? (
+            <input type="text" id="pimage" name="pimage" required {!isFieldInvalid ? "success" : ""}   {...getFieldProps("website")}/>
+                {isFieldInvalid("website") ? (
               <p>
                 Title must be at least three letters long
               </p>

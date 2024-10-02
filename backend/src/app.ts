@@ -16,7 +16,7 @@ app.post("/projects", async (c) => {
   const dataFromFrontend = await c.req.json<{ id: number, title: string, company: string, description: string; url: string; website: string; createdAt: Date}>();
 
   const created = {
-    id: Number(crypto.randomUUID()),
+    id: crypto.randomUUID(),
     title: dataFromFrontend.title,
     company: dataFromFrontend.company,
     description: dataFromFrontend.description, 
