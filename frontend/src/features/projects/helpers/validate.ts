@@ -8,6 +8,7 @@ const projectSchema = z.object({
   company: z.string(),
   description: z.string(),
   url: z.string(),
+  website: z.string(),
   createdAt: z.string().datetime(),
 });
 

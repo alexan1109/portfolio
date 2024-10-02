@@ -1,20 +1,21 @@
 import useProjectForm from "../hooks/useProjectForm.tsx";
 
 type ProjectFormProps = {
-    addProject: (title: string, company: string, description: string, url: string) => void;
+    addProject: (title: string, company: string, description: string, url: string, website: string) => void;
   };
 
   export default function ProjectForm(props: Readonly<ProjectFormProps>) {
     const { addProject } = props;
 
     const { handleSubmit, getFieldProps, isFieldInvalid } = useProjectReducerForm({
-        initialFields: { title: "", company: "", descirption: "", url: "" },
-        onSubmit: (data: { title: string; company: string; description: string; url: string; }) => addProject(data.title, data.company, data.description, data.url),
+        initialFields: { title: "", company: "", descirption: "", url: "", website: "",},
+        onSubmit: (data: { title: string; company: string; description: string; url: string; website: string; }) => addProject(data.title, data.company, data.description, data.url, data.website),
         validate: {
           title: (_: any, value: string | any[]) => value.length > 2,
           company: (_: any, value: string | any[]) => value.length > 2,
           description: (_: any, value: string | any[]) => value.length > 2,
           url: (_: any, value: string | any[]) => value.length > 2,
+          adress: (_: any, value: string | any[]) => value.length > 2,
         },
       });
 
@@ -50,6 +51,14 @@ type ProjectFormProps = {
                 Title must be at least three letters long
               </p>
             ) : null}</label><br/><br/>
+            <label>Website-adress:<br/>
+            <input type="text" id="pimage" name="pimage" required {!isFieldInvalid ? "success" : ""}   {...getFieldProps("title")}/>
+                {isFieldInvalid("adress") ? (
+              <p>
+                Title must be at least three letters long
+              </p>
+            ) : null}
+            </label><br/><br/>
                 <button type="submit" id="button-bgcolor add-new-project">Submit</button>
             </form>
         </article>

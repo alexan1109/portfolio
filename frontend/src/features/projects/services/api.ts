@@ -17,7 +17,7 @@ const remove = async (id: number) => {
   }
 };
 
-const create = async (data: Pick<ProjectType, "title">) => {
+const create = async (data: Pick<ProjectType, "title" | "company" | "description" | "url" | "website">) => {
   try {
     const createdProject = await ofetch(url, {
       method: "POST",

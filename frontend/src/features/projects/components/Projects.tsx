@@ -1,7 +1,7 @@
 import type { PropsWithChildren } from "react";
 
 import ProjectForm from "./ProjectForm";
-import type { Action, ProjectType } from "../../types/types";
+import type { Action, ProjectType } from "../types/types";
 
 type ProjectProps = {
     handleProjectMutation: (action: Action, project: Partial<ProjectType>) => void;
@@ -13,8 +13,8 @@ type ProjectProps = {
 
     const { projects = [], handleProjectMutation, children } = props;
 
-    const addProject = async (title: string, company: string, description: string, url: string) => {
-        handleProjectMutation("add", { title, company, description, url });
+    const addProject = async (title: string, company: string, description: string, url: string, website: string) => {
+        handleProjectMutation("add", { title, company, description, url, website});
       };
 
       const removeProject = (id: number) => {
@@ -34,6 +34,7 @@ type ProjectProps = {
         <h4>{data.company}</h4>
         <p>{data.description}</p>
         <img src={data.url} />
+        <p>Website for project: {data.website}</p>
             <button type='button' onClick={() => removeProject(data.id)}> [Delete project]</button>
           </article> 
         ))

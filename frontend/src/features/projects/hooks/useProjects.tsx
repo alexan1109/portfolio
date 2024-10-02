@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import projectsApi from "../services/api";
-import type { ProjectType } from "../../types/types";
+import type { ProjectType } from "../types/types";
 
 type Status = "idle" | "loading" | "error" | "success" | "fetching";
 
@@ -50,11 +50,11 @@ export function useProjects() {
       }, [fetchData]);
 
       const add = async (data: Partial<ProjectType>) => {
-        const { title = "", company = "", description = "", url = "" } = data;
+        const { title = "", company = "", description = "", url = "" , website = ""} = data;
     
         try {
           setStatus("loading");
-          await projectsApi.create({ title, company, description, url });
+          await projectsApi.create({ title, company, description, url, website });
           await fetchData();
           setStatus("success");
         } catch (error) {

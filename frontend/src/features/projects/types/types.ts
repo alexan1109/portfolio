@@ -4,6 +4,7 @@ export type ProjectType = {
     company: string,
     description: string,
     url: string,
+    website: string,
     createdAt: string,
 }
 
