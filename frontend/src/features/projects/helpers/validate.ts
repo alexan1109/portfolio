@@ -12,3 +12,7 @@ const projectSchema = z.object({
 });
 
 const projectsSchema = z.array(projectSchema);
+
+export function validateProject(data: unknown) {
+  return projectSchema.safeParse(data);
+}
