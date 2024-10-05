@@ -8,8 +8,10 @@ const projectSchema = z.object({
   company: z.string(),
   description: z.string(),
   url: z.string(),
+  categories: z.array(z.string()),
   website: z.string(),
-  createdAt: z.string().datetime(),
+  createdAt: z.string(),
+  updatedAt: z.string().datetime(),
 });
 
 const projectsSchema = z.array(projectSchema);

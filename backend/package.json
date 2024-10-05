@@ -4,9 +4,8 @@
     "dev": "tsx watch src/index.ts"
   },
   "dependencies": {
-    "@hono/node-server": "^1.13.0",
-    "hono": "^4.6.2",
-    "react-router-dom": "^6.26.2"
+    "@hono/node-server": "^1.13.1",
+    "hono": "^4.6.3"
   },
   "devDependencies": {
     "@types/node": "^20.11.17",

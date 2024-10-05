@@ -50,11 +50,11 @@ export function useProjects() {
       }, [fetchData]);
 
       const add = async (data: Partial<ProjectType>) => {
-        const { title = "", company = "", description = "", url = "" , website = "", createdAt = new Date()} = data;
+        const { title = "", company = "", description = "", url = "",  categories = [""], website = "", createdAt = "", updatedAt = new Date() } = data;
     
         try {
           setStatus("loading");
-          await projectsApi.create({ title, company, description, url, website, createdAt });
+          await projectsApi.create({ title, company, description, url, categories, website, createdAt, updatedAt });
           await fetchData();
           setStatus("success");
         } catch (error) {
@@ -80,7 +80,7 @@ export function useProjects() {
           resetToIdle();
         }
       };
-    
+
       return {
         add,
         remove,

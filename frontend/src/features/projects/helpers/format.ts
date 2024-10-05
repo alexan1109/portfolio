@@ -1,8 +1,8 @@
 import { formatDistance as fDistance } from "date-fns";
 import { nb } from "date-fns/locale";
 
-export function formatDistance(createdAt: Date): string {
-  return fDistance(createdAt, new Date(), {
+export function formatDistance(updatedAt: Date): string {
+  return fDistance(updatedAt, new Date(), {
     addSuffix: true,
     includeSeconds: true,
     locale: nb,

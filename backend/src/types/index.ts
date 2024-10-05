@@ -5,6 +5,8 @@ export type ProjectType = {
     company: string,
     description: string,
     url: string,
+    categories: string[],
     website: string,
     createdAt: Date,
+    updatedAt: Date,
 }

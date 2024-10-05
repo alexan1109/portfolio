@@ -57,12 +57,10 @@ type UseFormProps<T> = {
 
           const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
             event.preventDefault();
-            // Validerer om alle feltene er gyldige
             const isFormValid = Object.values(fields).every((field) => field.isValid);
         
             if (!isFormValid) return;
         
-            // Henter ut alle verdiene fra feltene
             const formData = Object.fromEntries(
               Object.keys(fields).map((key) => [key, fields[key as keyof T].value])
             ) as T;

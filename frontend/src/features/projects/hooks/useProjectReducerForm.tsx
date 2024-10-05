@@ -1,7 +1,7 @@
 import { useReducer, type FormEvent } from "react";
 
 type FieldState = {
-    value: string;
+    value: string | any;
     isValid: boolean;
     isDirty: boolean;
     isTouched: boolean;
@@ -17,7 +17,7 @@ type FieldState = {
   
   type UseFormProps<T> = {
     initialFields: T;
-    onSubmit: (data: T) => void;
+    onSubmit: (data: T | any) => void;
     validate: {
       [K in keyof T]?: (field: K, value: string) => boolean;
     };
@@ -112,7 +112,6 @@ type FieldState = {
         const isFormValid = Object.values(state).every((field) => field.isValid);
         if (!isFormValid) return;
     
-        // Henter ut alle verdiene fra feltene
         const formData = Object.fromEntries(
           Object.keys(state).map((key) => [key, state[key as keyof T].value])
         ) as T;

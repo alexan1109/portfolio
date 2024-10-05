@@ -17,7 +17,7 @@ const remove = async (id: number) => {
   }
 };
 
-const create = async (data: Pick<ProjectType, "title" | "company" | "description" | "url" | "website" | "createdAt">) => {
+const create = async (data: Pick<ProjectType, "title" | "company" | "description" | "url" | "categories" | "website" | "createdAt" | "updatedAt">) => {
   try {
     const createdProject = await ofetch(url, {
       method: "POST",
@@ -33,12 +33,12 @@ const create = async (data: Pick<ProjectType, "title" | "company" | "description
 const list = async () => {
   try {
     const projects = await ofetch(url);
-    // console.log(habitsSchema.safeParse(habits.data));
     return projectsSchema.parse(projects.data);
   } catch (error) {
     console.error(error);
   }
 };
+
 
 export default { remove, create, list };
 
