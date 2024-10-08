@@ -2,11 +2,11 @@ import { ofetch } from "ofetch";
 
 import { endpoints } from "../../../config/urls";
 import { projectsSchema } from "../helpers/validate";
-import type { ProjectType } from "../types/types";
+import type { ProjectProps } from "../types/types";
 
 const url = endpoints.projects;
 
-const remove = async (id: number) => {
+const remove = async (id: string) => {
   try {
     await ofetch(`${url}/${id}`, {
       method: "DELETE",
@@ -17,7 +17,7 @@ const remove = async (id: number) => {
   }
 };
 
-const create = async (data: Pick<ProjectType, "title" | "company" | "description" | "url" | "categories" | "website" | "createdAt" | "updatedAt">) => {
+const create = async (data: Pick<ProjectProps, "title" | "company" | "description" | "url" | "categories" | "website" | "files" | "createdAt" | "updatedAt">) => {
   try {
     const createdProject = await ofetch(url, {
       method: "POST",

@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 import projectsApi from "../services/api";
-import type { ProjectType } from "../types/types";
+import type { ProjectProps } from "../types/types";
+import { formatCreated, formatUpdated } from "../helpers/format";
+import { formatDate } from "date-fns";
 
 type Status = "idle" | "loading" | "error" | "success" | "fetching";
 
@@ -9,7 +11,7 @@ export function useProjects() {
   const [status, setStatus] = useState<Status>("idle");
 
   const [data, setData] = useState<{
-    projects: ProjectType[];
+    projects: ProjectProps[];
   }>({ projects: []});
   const [error, setError] = useState<string | null>(null);
 
@@ -34,11 +36,19 @@ export function useProjects() {
       const [projects = []] = await Promise.all([
         projectPromise,
       ]);
-      setData({ projects });
+         // Format the projects after fetching
+    const formattedProjects = projects.map((datas: { id: string, title: string, company: string, description: string, url: string, categories: string[], website: string, files: FileList[] | null, createdAt: string | number | Date; updatedAt: string | number | Date }) => ({
+      ...datas,
+      createdAt: new Date(datas.createdAt),  // Ensure this is a Date object
+      updatedAt: new Date(datas.updatedAt),  // Ensure this is a Date object
+      createdAtFormatted: formatCreated(new Date(datas.createdAt)),
+      updatedAtFormatted: formatUpdated(new Date(datas.updatedAt)),
+    }));
+      setData({ projects: formattedProjects });
       setStatus("success");
     } catch (error) {
       setStatus("error");
-      setError("Feilet ved henting av data");
+      setError("Error getting the data");
     } finally {
       resetToIdle();
     }
@@ -49,23 +59,23 @@ export function useProjects() {
         fetchData();
       }, [fetchData]);
 
-      const add = async (data: Partial<ProjectType>) => {
-        const { title = "", company = "", description = "", url = "",  categories = [""], website = "", createdAt = "", updatedAt = new Date() } = data;
+      const add = async (data: Partial<ProjectProps>) => {
+        const { title = "", company = "", description = "", url = "",  categories = [""], website = "", files = null, createdAt = new Date(), updatedAt = new Date() } = data;
     
         try {
           setStatus("loading");
-          await projectsApi.create({ title, company, description, url, categories, website, createdAt, updatedAt });
+          await projectsApi.create({ title, company, description, url, categories, website, files, createdAt, updatedAt });
           await fetchData();
           setStatus("success");
         } catch (error) {
           setStatus("error");
-          setError("Failed creating habit");
+          setError("Failed creating project");
         } finally {
           resetToIdle();
         }
       };
       
-      const remove = async (id?: number) => {
+      const remove = async (id?: string) => {
         if (!id) return;
     
         try {
