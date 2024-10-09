@@ -10,8 +10,8 @@ const projectSchema = z.object({
   url: z.string(),
   categories: z.array(z.string()),
   website: z.string(),
-  files: z.array(
-  z.instanceof(FileList)),
+  files: 
+  z.instanceof(FileList),
   createdAt: z.string(),
   updatedAt: z.string().datetime(),
 });

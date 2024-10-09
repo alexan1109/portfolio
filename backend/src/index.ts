@@ -17,7 +17,7 @@ app.get("/projects", (c) => {
 });
 
 app.post("/projects", async (c) => {
-  const dataFromFrontend = await c.req.json<{ title: string, company: string, description: string; url: string; categories: string[], website: string; files: FileList[] | null; createdAt: Date; updatedAt: Date;}>();
+  const dataFromFrontend = await c.req.json<{ title: string, company: string, description: string; url: string; categories: string[], website: string; files: FileList | null; createdAt: Date; updatedAt: Date;}>();
 
   const created = {
     id: crypto.randomUUID(),

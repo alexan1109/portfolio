@@ -37,7 +37,7 @@ export function useProjects() {
         projectPromise,
       ]);
          // Format the projects after fetching
-    const formattedProjects = projects.map((datas: { id: string, title: string, company: string, description: string, url: string, categories: string[], website: string, files: FileList[] | null, createdAt: string | number | Date; updatedAt: string | number | Date }) => ({
+    const formattedProjects = projects.map((datas: { id: string, title: string, company: string, description: string, url: string, categories: string[], website: string, files: FileList | null, createdAt: string | number | Date; updatedAt: string | number | Date }) => ({
       ...datas,
       createdAt: new Date(datas.createdAt),  // Ensure this is a Date object
       updatedAt: new Date(datas.updatedAt),  // Ensure this is a Date object

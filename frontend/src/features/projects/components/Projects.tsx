@@ -12,7 +12,7 @@ export type ProjectProps = {
   url: string,
   categories: string[],
   website: string,
-  files: FileList[] | null,
+  files: FileList | null,
   createdAt: Date,
   updatedAt: Date,
 }
@@ -59,7 +59,7 @@ function Projects () {
 </pre>
         {formatCreated}
         {formatUpdated}
-      </>
+    </>
     );
   }
   

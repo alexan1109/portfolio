@@ -12,7 +12,7 @@ interface CreateProjectProps {
     url: string,
     categories: string[],
     website: string,
-    files: FileList[] | null,
+    files: FileList | null,
     createdAt: Date,
     updatedAt: Date,
 }
@@ -66,13 +66,13 @@ const formRef = useRef<HTMLFormElement | null>(null);
             <h3 id="form-title">Add new <br/> project</h3>
             <form id="projectForm" method="POST" action="/" ref={formRef} onSubmit={handleFormSubmit}>
                 <label>Name: <br/>
-                <input type="text" id="pname" name="title" /></label><br/><br/>
+                <input type="text" id="pname" name="title" autoComplete='on' /></label><br/><br/>
                 <label>Company: <br/>
-                <input type="text" id="pcompany" name="company" /></label><br/><br/>
+                <input type="text" id="pcompany" name="company" autoComplete='on'/></label><br/><br/>
                 <label>Description: <br/>
-                <input type="text" id="pdescription" name="description" /></label><br/><br/>
+                <input type="text" id="pdescription" name="description" autoComplete='on'/></label><br/><br/>
                 <label>Image URL: <br/>
-                <input type="text" id="pimage" name="url"/></label><br/><br/>
+                <input type="text" id="pimage" name="url" autoComplete='on'/></label><br/><br/>
                 <label htmlFor="phtml">HTML<input type="checkbox" id="phtml" name="categories" value="HTML" /></label>
                 <br/>
                 <label htmlFor="pcss">CSS<input type="checkbox" id="pcss" name="categories" value="CSS" /></label>
@@ -86,7 +86,7 @@ const formRef = useRef<HTMLFormElement | null>(null);
                 <label htmlFor="pnext">NextJS<input type="checkbox" id="pnext" name="categories" value="NextJS" /></label>
                 <br/>
                 <label htmlFor="padress">Website-adress:<br/>
-                <input type="text" id="padress" name="website" />
+                <input type="text" id="padress" name="website" autoComplete='on' />
                 </label><br/><br/>
                 <label htmlFor="pfiles">Project-files: '(accept: .tsx, .ts, .js, .html, .json):<br/>
                 <input type="file" id="pfiles" name="files" accept='.tsx,.ts,.js,.html,.json' />
