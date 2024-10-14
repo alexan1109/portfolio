@@ -3,10 +3,10 @@ import { Hono } from 'hono'
 import { port } from './config'
 import { data } from './data/data'
 import { cors } from 'hono/cors'
-import { Users } from './types/users'
+import { User } from './types/users'
 import { authenticate } from './middleware'
 type ContextVariables = {
-  user: Users | null;
+  user: User | null;
 };
 const app = new Hono<{ Variables: ContextVariables }>();
 
@@ -25,7 +25,6 @@ app.get('/', (c) => {
 app.get("/projects", authenticate(), (c) => {
   const user = c.get("user");
 
-  const today = new Date();
   const userProjects = data.filter((project) => {
     const { userId } = project;
     return userId === user?.id;
