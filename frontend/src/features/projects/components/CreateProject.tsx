@@ -12,9 +12,9 @@ interface CreateProjectProps {
     url: string,
     categories: string[],
     website: string,
-    files: FileList | null,
-    createdAt: Date,
-    updatedAt: Date,
+    userId: string,
+    email: string,
+    createdAt: string,
 }
 
 function CreateProject ({ setProjects, initializeData }: CreateProjectProps) {
@@ -88,9 +88,8 @@ const formRef = useRef<HTMLFormElement | null>(null);
                 <label htmlFor="padress">Website-adress:<br/>
                 <input type="text" id="padress" name="website" autoComplete='on' />
                 </label><br/><br/>
-                <label htmlFor="pfiles">Project-files: '(accept: .tsx, .ts, .js, .html, .json):<br/>
-                <input type="file" id="pfiles" name="files" accept='.tsx,.ts,.js,.html,.json' />
-                </label><br/><br/>
+                <label htmlFor='puser'>User-Id: <br/><input type="text" id="puser" name="userId"/></label><br/><br/>
+                <label htmlFor='pemail'>Email: <br/><input type="text" id="pemail" name="email"/></label><br/><br/>
                 <label htmlFor="pdate">Created at:<br/>
                 <input type="date" id="pdate" name="createdAt" />
                 </label><br/>

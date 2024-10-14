@@ -9,9 +9,9 @@ export const data: ProjectType[] = [
         url: "https://images.unsplash.com/photo-1472289065668-ce650ac443d2?q=80&w=200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         categories: ["HTML", "CSS", "Javascript"],
         website: "http://www.alexandermyrvold.cloud/",
-        files: null,
-        createdAt: new Date("2022-01-01"),
-        updatedAt: new Date(),
+        userId: "1",
+        email: "alexanhm@hiof.no",
+        createdAt: new Date("2024-05-05"),
 
       },
     
@@ -23,9 +23,9 @@ export const data: ProjectType[] = [
         url: "https://images.unsplash.com/photo-1472289065668-ce650ac443d2?q=80&w=200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         categories: ["HTML", "CSS", "Javascript", "React"],
         website: "http://www.alexandermyrvold.cloud/",
-        files: null,
+        userId: "1",
+        email: "alexanhm@hiof.no",
         createdAt: new Date("2023-05-05"),
-        updatedAt: new Date(),
       },
       {
         id: "2",
@@ -35,9 +35,9 @@ export const data: ProjectType[] = [
         url: "https://images.unsplash.com/photo-1472289065668-ce650ac443d2?q=80&w=200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         categories: ["HTML", "CSS", "Javascript", "React", "Node.js"],
         website: "http://www.alexandermyrvold.cloud/",
-        files: null,
-        createdAt: new Date("2023-10-09"),
-        updatedAt: new Date(),
+        userId: "2",
+        email: "andreas@hiof.no",
+        createdAt: new Date("2024-10-05"),
       },
     
       {
@@ -48,9 +48,9 @@ export const data: ProjectType[] = [
         url: "https://images.unsplash.com/photo-1472289065668-ce650ac443d2?q=80&w=200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         categories: ["HTML", "CSS", "Javascript", "React", "Node.js", "Next.js"],
         website: "http://www.alexandermyrvold.cloud/",
-        files: null,
-        createdAt: new Date("2023-12-03"),
-        updatedAt: new Date(),
+        userId: "2",
+        email: "andreas@hiof.no",
+        createdAt: new Date("2024-10-10"),
       },
       
 ];

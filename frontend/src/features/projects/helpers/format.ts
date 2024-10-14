@@ -9,10 +9,4 @@ export function formatCreated(createdAt: Date): string {
   });
 }
 
-export function formatUpdated(updatedAt: Date): string {
-  return fDistance(updatedAt, new Date(), {
-    addSuffix: true,
-    includeSeconds: true,
-    locale: nb,
-  });
-}
+

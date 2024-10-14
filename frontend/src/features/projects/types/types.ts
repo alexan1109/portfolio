@@ -1,3 +1,4 @@
+
 export type ProjectProps = {
     id: string,
     title: string,
@@ -6,9 +7,10 @@ export type ProjectProps = {
     url: string,
     categories: string[],
     website: string,
-    files: FileList | null,
-    createdAt: Date,
-    updatedAt: Date,
+    userId: string,
+    email: string,
+    createdAt: string,
+   
 }
 
 

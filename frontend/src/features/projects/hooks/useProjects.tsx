@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 import projectsApi from "../services/api";
 import type { ProjectProps } from "../types/types";
-import { formatCreated, formatUpdated } from "../helpers/format";
-import { formatDate } from "date-fns";
+import { formatCreated } from "../helpers/format";
+
 
 type Status = "idle" | "loading" | "error" | "success" | "fetching";
 
@@ -36,17 +36,15 @@ export function useProjects() {
       const [projects = []] = await Promise.all([
         projectPromise,
       ]);
-         // Format the projects after fetching
-    const formattedProjects = projects.map((datas: { id: string, title: string, company: string, description: string, url: string, categories: string[], website: string, files: FileList | null, createdAt: string | number | Date; updatedAt: string | number | Date }) => ({
+    const formattedProjects = projects.map((datas: { id: string, title: string, company: string, description: string, url: string, categories: string[], website: string, userId: string, email: string, createdAt: string}) => ({
       ...datas,
-      createdAt: new Date(datas.createdAt),  // Ensure this is a Date object
-      updatedAt: new Date(datas.updatedAt),  // Ensure this is a Date object
+      createdAt: new Date(datas.createdAt),
       createdAtFormatted: formatCreated(new Date(datas.createdAt)),
-      updatedAtFormatted: formatUpdated(new Date(datas.updatedAt)),
     }));
       setData({ projects: formattedProjects });
       setStatus("success");
-    } catch (error) {
+    } 
+    catch (error) {
       setStatus("error");
       setError("Error getting the data");
     } finally {
@@ -60,11 +58,11 @@ export function useProjects() {
       }, [fetchData]);
 
       const add = async (data: Partial<ProjectProps>) => {
-        const { title = "", company = "", description = "", url = "",  categories = [""], website = "", files = null, createdAt = new Date(), updatedAt = new Date() } = data;
+        const { title = "", company = "", description = "", url = "",  categories = [""], website = "", userId = "", email = "", createdAt =  new Date() } = data;
     
         try {
           setStatus("loading");
-          await projectsApi.create({ title, company, description, url, categories, website, files, createdAt, updatedAt });
+          await projectsApi.create({ title, company, description, url, categories, website, userId, email, createdAt });
           await fetchData();
           setStatus("success");
         } catch (error) {

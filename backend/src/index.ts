@@ -3,22 +3,41 @@ import { Hono } from 'hono'
 import { port } from './config'
 import { data } from './data/data'
 import { cors } from 'hono/cors'
-const app = new Hono()
-app.use("/*", cors());
+import { Users } from './types/users'
+import { authenticate } from './middleware'
+type ContextVariables = {
+  user: Users | null;
+};
+const app = new Hono<{ Variables: ContextVariables }>();
+
+app.use(
+  "/*",
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
 
 app.get('/', (c) => {
   return c.text('Hello Hono!')
 })
 
-app.get("/projects", (c) => {
-    return c.json({
-    data: data,
+app.get("/projects", authenticate(), (c) => {
+  const user = c.get("user");
+
+  const today = new Date();
+  const userProjects = data.filter((project) => {
+    const { userId } = project;
+    return userId === user?.id;
   });
+return c.json({
+  data: userProjects,
+});
+
 });
 
 app.post("/projects", async (c) => {
-  const dataFromFrontend = await c.req.json<{ title: string, company: string, description: string; url: string; categories: string[], website: string; files: FileList | null; createdAt: Date; updatedAt: Date;}>();
-
+  const dataFromFrontend = await c.req.json<{ title: string; company: string; description: string; url: string; categories: string[], website: string; userId: string; email: string; createdAt: Date;}>();
   const created = {
     id: crypto.randomUUID(),
     title: dataFromFrontend.title,
@@ -27,9 +46,9 @@ app.post("/projects", async (c) => {
     url: dataFromFrontend.url,
     categories: dataFromFrontend.categories,
     website: dataFromFrontend.website,
-    files: dataFromFrontend.files,
+    userId: dataFromFrontend.userId,
+    email: dataFromFrontend.email,
     createdAt: dataFromFrontend.createdAt,
-    updatedAt: dataFromFrontend.updatedAt,
   };
 
   data.push(created)

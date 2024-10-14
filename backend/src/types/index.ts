@@ -1,4 +1,5 @@
 export type ID = ReturnType<typeof crypto.randomUUID>;
+
 export type ProjectType = {
     id: string,
     title: string,
@@ -7,7 +8,9 @@ export type ProjectType = {
     url: string,
     categories: string[],
     website: string,
-    files: FileList | null,
+    userId: string,
+    email: string,
     createdAt: Date,
-    updatedAt: Date,
 }
+
+

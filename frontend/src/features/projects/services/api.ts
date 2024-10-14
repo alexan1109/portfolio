@@ -1,7 +1,7 @@
 import { ofetch } from "ofetch";
 
 import { endpoints } from "../../../config/urls";
-import { projectsSchema } from "../helpers/validate";
+import { projectsSchema, validateProject } from "../helpers/validate";
 import type { ProjectProps } from "../types/types";
 
 const url = endpoints.projects;
@@ -17,7 +17,7 @@ const remove = async (id: string) => {
   }
 };
 
-const create = async (data: Pick<ProjectProps, "title" | "company" | "description" | "url" | "categories" | "website" | "files" | "createdAt" | "updatedAt">) => {
+const create = async (data: Pick<ProjectProps, "title" | "company" | "description" | "url" | "categories" | "website" | "userId" | "email" | "createdAt">) => {
   try {
     const createdProject = await ofetch(url, {
       method: "POST",
@@ -32,8 +32,11 @@ const create = async (data: Pick<ProjectProps, "title" | "company" | "descriptio
 
 const list = async () => {
   try {
-    const projects = await ofetch(url);
-    return projectsSchema.parse(projects.data);
+    const projects = await ofetch(url, {
+      credentials: "include",
+    });
+    // console.log(habitsSchema.safeParse(habits.data));
+    return validateProject(projects.data);
   } catch (error) {
     console.error(error);
   }

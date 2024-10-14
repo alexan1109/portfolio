@@ -1,7 +1,6 @@
-"use client"
 import React, { useEffect, useState } from "react";
 import CreateProject from "./CreateProject";
-import { formatCreated, formatUpdated } from "../helpers/format";
+import { formatCreated} from "../helpers/format";
 import { ofetch } from "ofetch";
 
 export type ProjectProps = {
@@ -12,9 +11,9 @@ export type ProjectProps = {
   url: string,
   categories: string[],
   website: string,
-  files: FileList | null,
-  createdAt: Date,
-  updatedAt: Date,
+  userId: string,
+  email: string,
+  createdAt: string,
 }
 function Projects () {
 
@@ -37,41 +36,37 @@ function Projects () {
   }, []);
 
   const ProjectComp  = ({projects}: {projects: Readonly<ProjectProps>}) => {
+
     return(
       <>
         <h2>{projects.title}</h2>
         <h4>{projects.company}</h4>
         <p>{projects.description}</p>
         <img src={projects.url} />
-        <ul><h4>Categories:</h4>
-          <li>{projects.categories[0]}</li>
-          <li>{projects.categories[1]}</li>
-          <li>{projects.categories[2]}</li>
-          <li>{projects.categories[3]}</li>
-          <li>{projects.categories[4]}</li>
-          <li>{projects.categories[5]}</li>
-        </ul>
+        <ul>
+        <h4>Categories:</h4>
+        {projects.categories.map((category, index) => (
+          <li key={index}>{category}</li>
+        ))}
+      </ul>
         <p><a href={projects.website}><i>Portfolio Website</i></a></p>
-        <pre>
-  {projects.files instanceof FileList
-    ? Array.from(projects.files).map(file => file.name).join(', ')
-    : 'No files uploaded'}
-</pre>
-        {formatCreated}
-        {formatUpdated}
+    <p>User-id: {projects.userId}</p>
+    <p>email: {projects.email}</p>
+   <p>Created at: <br/>{formatCreated(new Date(projects.createdAt))}</p>
     </>
     );
   }
   
   const Projects = ({projects}:{projects: Readonly<ProjectProps[]>}) => {
-
+    const projectArray = projects as ProjectProps[];
+    console.log('Projects:', projects);
     return (
       <section id="grid-container">
         
-        {projects.length === 0 ? (
+        {!projectArray || projectArray.length === 0 ? (
           <p>You have no projects.</p>
       ) : (
-        projects.map((data) => (
+        projectArray.map((data) => (
           <article className="articles" key={data.id}>
             <ProjectComp projects={data} />
             <button type='button' onClick={() => removeProject(data.id)}> [Delete project]</button>
