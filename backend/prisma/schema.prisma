@@ -20,8 +20,9 @@ model Projects {
   title String
   company  String
   description String
-   website String
-    userId String
-    email String
-    createdAt DateTime @default(now())
+  url String
+  website String
+  userId String
+  email String
+  createdAt DateTime
 }

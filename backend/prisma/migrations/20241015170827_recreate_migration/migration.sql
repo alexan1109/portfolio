@@ -12,10 +12,11 @@ CREATE TABLE "Projects" (
     "title" TEXT NOT NULL,
     "company" TEXT NOT NULL,
     "description" TEXT NOT NULL,
+    "url" TEXT NOT NULL,
     "website" TEXT NOT NULL,
     "userId" TEXT NOT NULL,
     "email" TEXT NOT NULL,
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+    "createdAt" DATETIME NOT NULL
 );
 
 -- CreateIndex
