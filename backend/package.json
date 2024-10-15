@@ -4,6 +4,9 @@
   "scripts": {
     "dev": "tsx watch src/index.ts"
   },
+  "prisma": {
+  "seed": "ts-node prisma/seed.js"
+},
   "dependencies": {
     "@hono/node-server": "^1.13.1",
     "@prisma/client": "^5.20.0",

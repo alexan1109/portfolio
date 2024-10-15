@@ -6,14 +6,14 @@ async function main() {
 
       const project = await prisma.projects.create({
         data: {
-          id: '2',
-          title: "Project 2",
-          company: "Company 2",
+          id: '3',
+          title: "Project 3",
+          company: "Company 3",
           description: "Description of project",
           website: "alicejenning.cloud",
           userId: "1",
           email: "alicejen@gmail.com",
-          createdAt: new Date("2024-10-05"),
+          createdAt: new Date("2024-11-05"),
 
         },
       })
