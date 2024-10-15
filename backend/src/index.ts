@@ -24,15 +24,13 @@ app.get('/', (c) => {
 
 app.get("/projects", authenticate(), (c) => {
   const user = c.get("user");
+  
+  if (!user) {
+    return c.json({ message: 'Unauthorized' }, 401);
+  }
 
-  const userProjects = data.filter((project) => {
-    const { userId } = project;
-    return userId === user?.id;
-  });
-return c.json({
-  data: userProjects,
-});
-
+  const userProjects = data.filter((project) => project.userId === user.id);
+  return c.json({ data: userProjects });
 });
 
 app.post("/projects", async (c) => {

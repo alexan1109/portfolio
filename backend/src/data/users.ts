@@ -1,4 +1,3 @@
-import {Users} from "../types/users";
 export {users};
 
 const users = [
@@ -17,7 +16,7 @@ const users = [
   {
     id: "3",
     email: "trude@test.no",
-    name: "True",
+    name: "Trude",
     role: "user",
   },
 ];
