@@ -1,5 +1,5 @@
-import type { User } from "./types/users";
-import {users} from "./data/users";
+import type { User } from "../types/users";
+import {users} from "../../../data/users";
 
 const parseCookie = (cookie: string) => {
     return Object.fromEntries(

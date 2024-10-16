@@ -3,13 +3,16 @@ import { Hono } from 'hono'
 import { port } from './config'
 import { data } from './data/data'
 import { cors } from 'hono/cors'
-import { User } from './types/users'
-import { authenticate } from './middleware'
+import { User } from './features/users/types/users'
+import { authenticate } from './features/users/utils/middleware'
+import { ServerEnv } from './lib/env'
 type ContextVariables = {
   user: User | null;
 };
 const app = new Hono<{ Variables: ContextVariables }>();
-
+export type HonoEnv = {
+  Bindings: ServerEnv; 
+};
 app.use(
   "/*",
   cors({

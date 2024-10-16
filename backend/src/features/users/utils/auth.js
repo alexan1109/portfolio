@@ -1,4 +1,4 @@
-import { users } from "./data/users";
+import { users } from "../../../data/users";
 const parseCookie = (cookie) => {
     return Object.fromEntries(cookie.split(";").map((cookie) => cookie.trim().split("=")));
 };
