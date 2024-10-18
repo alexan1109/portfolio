@@ -3,7 +3,7 @@ import { Hono } from 'hono';
 import { port } from './config';
 import { data } from './data/data';
 import { cors } from 'hono/cors';
-import { authenticate } from './middleware';
+import { authenticate } from './features/users/utils/middleware';
 const app = new Hono();
 app.use("/*", cors({
     origin: "http://localhost:5173",

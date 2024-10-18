@@ -15,7 +15,6 @@ const parseCookie = (cookie: string) => {
     const cookies = parseCookie(request.headers.get("Cookie") ?? "");
     const id = cookies["user.id"];
   
-    // TODO: Service call er også mulig
     return db.prepare("SELECT * FROM users WHERE id = ?").get(id) as
       | User
       | undefined;

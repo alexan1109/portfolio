@@ -3,7 +3,6 @@ import { createProjectRepository } from "../repository";
 import { createProjectService } from "../service";
 import { createProjectController } from "../controller";
 
-// Define the type for your database if needed
 type DB = any;
 
 export function createTestDb(): DB {
@@ -25,15 +24,15 @@ export function createTestDb(): DB {
           website TEXT NOT NULL,
           userId TEXT NOT NULL,
           email TEXT NOT NULL,
+          rule TEXT DEFAULT 'daily',
           createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
           FOREIGN KEY (userId) REFERENCES users(id)
         )
     `);
 
-    return db;  // Return the Database instance
+    return db; 
 }
 
-// This function seeds the database with initial test data
 export function seedTestDb(db: DB): void {
     const insertUser = db.prepare(
         "INSERT INTO users (id, email, name) VALUES (?, ?, ?)"
@@ -85,13 +84,11 @@ export function seedTestDb(db: DB): void {
     })();
 }
 
-// This function cleans the database by deleting all data
 export function cleanTestDb(db: DB): void {
     db.exec("DELETE FROM projects");
     db.exec("DELETE FROM users");
 }
 
-// This function sets up the test environment with the database and related services
 export function setupTestEnvironment() {
     const db = createTestDb();
     seedTestDb(db);

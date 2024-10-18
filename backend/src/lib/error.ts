@@ -1,4 +1,4 @@
-import type { HonoEnv } from "../index";
+import type { HonoEnv, ServiceContext } from "../index";
 import type { Context } from "hono";
 import { HTTPException } from "hono/http-exception";
 import type { StatusCode } from "hono/utils/http-status";
