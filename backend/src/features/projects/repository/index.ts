@@ -1,4 +1,4 @@
-import { db, type DB } from "@/db/db";
+import { db, type DB } from "../../../db/db";
 import type { Project, DbProject } from "../types";
 import { buildQuery, parsePaginationParams } from "../utils/filter";
 import { fromDb, toDb } from "../mappers";
@@ -108,7 +108,7 @@ export const createProjectRepository = (db: DB) => {
         project.description,
         project.url,
         project.website,
-        project.userId,
+        project.user_Id,
         project.email,
         project.createdAt,
       );

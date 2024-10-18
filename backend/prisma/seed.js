@@ -7,6 +7,8 @@ const PORT = 3000;
 
 app.use(express.json());
 const prisma = new PrismaClient();
+
+
 app.get('/', (req, res) => {
   res.send('Server is running!');
 });

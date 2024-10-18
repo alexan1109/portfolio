@@ -1,5 +1,6 @@
 import type { User } from "../types/users";
 import {users} from "../../../data/users";
+import { DB } from "../../../db/db";
 
 const parseCookie = (cookie: string) => {
     return Object.fromEntries(
@@ -7,13 +8,15 @@ const parseCookie = (cookie: string) => {
     );
   };
   
-  export function getUser(request: Request): User | null {
+  export async function getUser(
+    request: Request,
+    db: DB
+  ): Promise<User | undefined> {
     const cookies = parseCookie(request.headers.get("Cookie") ?? "");
-    console.log('Parsed cookies:', cookies); // Log the cookies for verification
-  
     const id = cookies["user.id"];
-    console.log('User ID from cookie:', id); // Log the extracted user ID
   
-    return users.find((user) => user.id === id) ?? null; // Match against your user data
+    // TODO: Service call er også mulig
+    return db.prepare("SELECT * FROM users WHERE id = ?").get(id) as
+      | User
+      | undefined;
   }
-  

@@ -18,7 +18,7 @@ export type DbProject = {
     description: string;
     url: string;
     website: string;
-    userId: string;
+    user_Id: string;
     email: string;
     createdAt: string;
   };

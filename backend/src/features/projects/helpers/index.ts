@@ -1,5 +1,4 @@
 import { z } from "zod";
-import { CreateProjectDto, DbProject } from "../types";
 
 const projectBaseSchema = z.object({
   id: z.string().uuid(),
@@ -29,7 +28,7 @@ export const dbProjectSchema = z.object({
   description: z.string(),
   url: z.string(),
   website: z.string(),
-  user_id: z.string().uuid(),
+  user_Id: z.string().uuid(),
   email: z.string(),
   createdAt: z.string(),
 
@@ -47,22 +46,22 @@ export const createProjectDtoSchema = projectBaseSchema.pick({
 
 
 export type Project = z.infer<typeof projectSchema>;
-export type DbHabit = z.infer<typeof dbProjectSchema>;
-export type CreateHabitDto = z.infer<typeof createProjectDtoSchema>;
+export type DbProject = z.infer<typeof dbProjectSchema>;
+export type createProjectDto = z.infer<typeof createProjectDtoSchema>;
 
 export const validateProject = (data: unknown): Project => projectSchema.parse(data);
 
 export const validateDbProject = (data: unknown): DbProject =>
   dbProjectSchema.parse(data);
 
-export const validateCreateProjectDto = (data: unknown): CreateProjectDto =>
+export const validateCreateProjectDto = (data: unknown): createProjectDto =>
   createProjectDtoSchema.parse(data);
 
-export const dbProjectToProject = (dbProject: DbHabit): Project => {
+export const dbProjectToProject = (dbProject: DbProject): Project => {
   const project: Project = {
     ...dbProject,
     createdAt: new Date(dbProject.createdAt),
-    userId: dbProject.user_id,
+    userId: dbProject.user_Id,
   };
   return validateProject(project);
 };
@@ -75,7 +74,7 @@ export const projectToDbProject = (project: Project): DbProject => {
     description: project.description,
     url: project.url,
     website: project.website,
-    userId: project.userId,
+    user_Id: project.userId,
     email: project.email,
     createdAt: project.createdAt.toISOString(),
   };

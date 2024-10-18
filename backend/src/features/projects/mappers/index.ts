@@ -11,7 +11,7 @@ export const fromDb = (project: DbProject) => {
     description: project.description,
     url: project.url,
     website: project.website,
-    userId: project.userId,
+    userId: project.user_Id,
     email: project.email,
     createdAt: new Date(project.createdAt),
   };
@@ -59,7 +59,7 @@ export const toDb = (data: Project) => {
         dbProject.website = value;
         break;
         case "userId":
-        dbProject.userId = value;
+        dbProject.user_Id = value;
         break;
       case "email":
         dbProject.email = value;

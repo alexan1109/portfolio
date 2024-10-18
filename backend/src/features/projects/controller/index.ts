@@ -4,9 +4,9 @@ import { errorResponse } from "../../../lib/error";
 
 import type { HonoEnv } from "../../../index";
 import type { Data } from "../../../types";
-import type { User } from "../features/users/types";
+import type { User } from "../../users/types/users";
 
-import { authenticate } from "@/features/users/utils/middleware";
+import { authenticate } from "../../users/utils/middleware";
 
 export const createProjectController = (projectService: ProjectService) => {
   const app = new Hono<HonoEnv>();

@@ -1,4 +1,4 @@
-import type { HonoEnv } from "@/app";
+import type { HonoEnv } from "../index";
 import type { Context } from "hono";
 import { HTTPException } from "hono/http-exception";
 import type { StatusCode } from "hono/utils/http-status";
@@ -17,7 +17,7 @@ const Errors = z.enum([
 
 export type ErrorCode = z.infer<typeof Errors>;
 
-function codeToStatus(code: ErrorCode): StatusCode {
+function codeToStatus(code: ErrorCode): any {
   switch (code) {
     case "BAD_REQUEST":
       return 400;

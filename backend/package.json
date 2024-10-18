@@ -2,7 +2,8 @@
   "name": "backend",
   "type": "module",
   "scripts": {
-    "dev": "tsx watch src/index.ts"
+    "dev": "tsx watch src/index.ts",
+    "test:integration": "vitest run -c vitest.integration.ts"
   },
   "prisma": {
     "seed": "ts-node prisma/seed.js"
@@ -10,10 +11,14 @@
   "dependencies": {
     "@hono/node-server": "^1.13.1",
     "@prisma/client": "^5.20.0",
+    "@t3-oss/env-core": "^0.11.1",
     "@types/better-sqlite3": "^7.6.11",
     "better-sqlite3": "^11.3.0",
+    "dotenv": "^16.4.5",
     "express": "^4.21.1",
-    "hono": "^4.6.3"
+    "hono": "^4.6.3",
+    "pino": "^9.5.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/node": "^20.16.11",

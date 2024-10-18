@@ -1,4 +1,4 @@
-import type { ResultFn } from "@/types";
+import type { ResultFn } from "../types";
 
 export const ResultHandler: ResultFn = {
   success(data, pagination) {
