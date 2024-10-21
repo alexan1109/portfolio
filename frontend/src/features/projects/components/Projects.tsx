@@ -21,22 +21,16 @@ function Projects () {
 
   const initializeData = async () => {
     try {
-      const response = await fetch("http://localhost:3000/projects", {
+      const data = await ofetch("http://localhost:3000/projects", {
         method: "GET",
         credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
       });
-  
-      if (!response.ok) {
-        throw new Error(`Error: ${response.statusText}`);
-      }
-  
-      const data = await response.json();
-      console.log("data fetched", data);
+
       setProjects(data.data);
-      console.log("data initialized");
+      console.log("Data initialized", data.data);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
