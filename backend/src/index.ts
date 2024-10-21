@@ -27,11 +27,10 @@ export type HonoEnv = {
 };
 
 
-export const makeApp = (
-  database: DB = db,
-  logger: Logger = makeLogger({ logLevel: env.LOG_LEVEL, env: env.NODE_ENV })
-) => {
-  const app = new Hono<HonoEnv>();
+const database: DB = db;
+const logger: Logger = makeLogger({ logLevel: env.LOG_LEVEL, env: env.NODE_ENV });
+
+const app = new Hono<HonoEnv>();
 
 app.use(
   "/*",
@@ -96,9 +95,6 @@ app.post("/projects", async (c) => {
   return c.json(created, 201);
 });
 
-
 app.onError(handleError);
-return app;
-};
-const app = makeApp();
+
 export default app;

@@ -3,7 +3,8 @@
   "type": "module",
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "test:integration": "vitest run -c vitest.integration.ts"
+    "test:integration": "vitest run -c vitest.integration.ts",
+    "test:unit": "vitest run -c vitest.unit.ts"
   },
   "prisma": {
     "seed": "ts-node prisma/seed.js"

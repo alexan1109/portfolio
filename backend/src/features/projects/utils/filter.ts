@@ -1,9 +1,9 @@
-const isValidField = (fields: readonly string[], field: string) => {
+export const isValidField = (fields: readonly string[], field: string) => {
     if (fields.includes("*")) return true;
     return fields.includes(field);
   };
   
-  const parseNumber = (value?: string | number): number | undefined => {
+  export const parseNumber = (value?: string | number): number | undefined => {
     if (!value) return undefined;
     if (typeof value === "number") return value;
     const parsed = Number.parseInt(value, 10);
@@ -23,11 +23,11 @@ const isValidField = (fields: readonly string[], field: string) => {
     };
   };
   
-  const isBooleanValue = (value: string): boolean => {
+  export const isBooleanValue = (value: string): boolean => {
     return value === "true" || value === "false";
   };
   
-  const addFieldSelection = (
+  export const addFieldSelection = (
     filters: Record<string, string>,
     fields: readonly string[],
     baseQuery: string
@@ -41,11 +41,11 @@ const isValidField = (fields: readonly string[], field: string) => {
       : baseQuery.replace("*", filterFields.join(", "));
   };
   
-  const sanitizeValue = (value: string): string => {
+  export const sanitizeValue = (value: string): string => {
     return value.replace(/[^a-z_]/gi, "");
   };
   
-  const addFilters = (
+ export  const addFilters = (
     filters: Record<string, string>,
     baseQuery: string
   ): string => {
@@ -79,7 +79,7 @@ const isValidField = (fields: readonly string[], field: string) => {
       : query.trim().replace(/^AND /, " WHERE ");
   };
   
-  const addPagination = (filters: Record<string, string> = {}): string => {
+  export const addPagination = (filters: Record<string, string> = {}): string => {
     let query = "";
   
     const pagination = parsePaginationParams(filters);
@@ -94,7 +94,7 @@ const isValidField = (fields: readonly string[], field: string) => {
     return query;
   };
   
-  const addSorting = (
+  export const addSorting = (
     fields: string[],
     filters: Record<string, string>
   ): string => {

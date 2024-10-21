@@ -2,8 +2,9 @@ import Database from "better-sqlite3";
 import { createProjectRepository } from "../repository";
 import { createProjectService } from "../service";
 import { createProjectController } from "../controller";
+import {DB} from "../../../db/db";
 
-type DB = any;
+
 
 export function createTestDb(): DB {
     const db = new Database(":memory:");
@@ -84,6 +85,12 @@ export function seedTestDb(db: DB): void {
     })();
 }
 
+export function checkSeededProjects(db: DB): void {
+    const projects = db.prepare("SELECT * FROM projects").all();
+    console.log("Seeded Projects:", projects);
+}
+
+
 export function cleanTestDb(db: DB): void {
     db.exec("DELETE FROM projects");
     db.exec("DELETE FROM users");
@@ -92,6 +99,7 @@ export function cleanTestDb(db: DB): void {
 export function setupTestEnvironment() {
     const db = createTestDb();
     seedTestDb(db);
+    checkSeededProjects(db);
 
     const projectRepository = createProjectRepository(db);
     const projectService = createProjectService(projectRepository);
@@ -99,3 +107,4 @@ export function setupTestEnvironment() {
 
     return { db, projectRepository, projectService, projectController };
 }
+

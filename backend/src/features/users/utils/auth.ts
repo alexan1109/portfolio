@@ -14,7 +14,7 @@ const parseCookie = (cookie: string) => {
   ): Promise<User | undefined> {
     const cookies = parseCookie(request.headers.get("Cookie") ?? "");
     const id = cookies["user.id"];
-  
+    if (!id) return undefined;
     return db.prepare("SELECT * FROM users WHERE id = ?").get(id) as
       | User
       | undefined;

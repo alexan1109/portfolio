@@ -1,8 +1,9 @@
 import type { Result } from "../../../types";
 import { projectRepository, type ProjectRepository } from "../repository";
-import type { CreateProjectDto, Project, UpdateProjectDto } from "../types";
+import type { CreateProjectDto, Project } from "../types";
 import { ResultHandler } from "../../../lib/result";
 import { createProject } from "../mappers";
+import { isValidProject } from "../utils/validator";
 
 export const createProjectService = (
   projectRepository: ProjectRepository,
