@@ -9,9 +9,9 @@ export const env = createEnv({
     NODE_ENV: z
       .enum(["development", "test", "production"])
       .default("development"),
-    FRONTEND_URL: z.coerce.string(),
+    FRONTEND_URL: z.coerce.string().default("http://localhost:5173"),
     PORT: z.coerce.number().default(3000),
-    DATABASE_URL: z.string(),
+    DATABASE_URL: z.string().default("backend\prisma\dev.db"),
     LOG_LEVEL: z.enum(["debug", "info", "warn", "error"]).default("info"),
   },
   runtimeEnv: process.env,

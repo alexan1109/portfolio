@@ -6,7 +6,7 @@ type ContactInfo = {
     email: string;
   }
 
-const email = 'alexanhm@hiof.no'
+const email = 'alexan4892@gmail.com'
 function Contact({ email }: ContactInfo) {
     return (
       <>
@@ -47,7 +47,7 @@ const handleFormSubmit = (event: FormEvent<HTMLFormElement>) => {
 
 return (
     <>
-    <h4>Contact me here: </h4>
+    <h4>Contact me here "NB: Not workable. Just to show I can display forms": </h4>
     <pre>
       {JSON.stringify(
         {messages}

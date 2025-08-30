@@ -63,7 +63,7 @@ const formRef = useRef<HTMLFormElement | null>(null);
 
     return(
         <article id="form-style">
-            <h3 id="form-title">Add new <br/> project</h3>
+            <h3 id="form-title">Add new <br/> project "Keep in mind: You can add projects, and delete them.</h3>
             <form id="projectForm" method="POST" action="/" ref={formRef} onSubmit={handleFormSubmit}>
                 <label>Name: <br/>
                 <input type="text" id="pname" name="title" autoComplete='on' /></label><br/><br/>
@@ -80,6 +80,8 @@ const formRef = useRef<HTMLFormElement | null>(null);
                 <label htmlFor="pjavascript">JavaScript<input type="checkbox" id="pjavascript" name="categories" value="JavaScript"/></label>
                 <br/>
                 <label htmlFor="preact">React<input type="checkbox" id="preact" name="categories" value="React"/></label>
+                <br/>
+                <label htmlFor="ptypescript">Typescript<input type="checkbox" id="ptypescript" name="categories" value="Typescript" /></label>
                 <br/>
                 <label htmlFor="pnode">NodeJS<input type="checkbox" id="pnode" name="categories" value="NodeJS"/></label>
                 <br/>

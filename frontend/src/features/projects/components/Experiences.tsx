@@ -18,7 +18,10 @@ function Experiences() {
        {
          id: 4,
          experience: 'SQL'
-       }
+       },
+        { id: 5,
+         experience: 'Typescript',
+       },
        ];
 
     type ExperienceProps = {

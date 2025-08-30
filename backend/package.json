@@ -19,7 +19,7 @@
     "express": "^4.21.1",
     "hono": "^4.6.3",
     "pino": "^9.5.0",
-    "zod": "^3.23.8"
+    "zod": "^3.25.76"
   },
   "devDependencies": {
     "@types/node": "^20.16.11",
